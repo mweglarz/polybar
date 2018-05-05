@@ -73,7 +73,7 @@ monitor = ${env:MONITOR:HDMI-0}
 bottom = false
 
 modules-left = filesystem 
-modules-center = spotify
+modules-center = spotify-previous spotify spotify-next 
 modules-right = vol0 vol1 eth wlan xkeyboard date
 
 tray-position = right
@@ -85,7 +85,7 @@ monitor = ${env:MONITOR:DP-0}
 bottom = false
 
 modules-left = filesystem 
-modules-center = spotify
+modules-center = spotify-previous spotify spotify-next 
 modules-right = vol0 vol1 eth wlan xkeyboard date
 
 [module/xwindow]
@@ -274,9 +274,24 @@ label =   %output%
 
 [module/spotify]
 type = custom/script
+interval = 2
 exec = /home/marcin/bin/mw-spotify.sh
-interval = 5
-label = %output:0:100:...%
+click-left = playerctl play-pause
+label = %{F#81b71a}  %{F-}%output:0:100:...%
+
+[module/spotify-next]
+type = custom/script
+interval = 600
+exec = echo  
+exec-if = pgrep -x spotify
+click-left = playerctl next
+
+[module/spotify-previous]
+type = custom/script
+interval = 600
+exec = echo 
+exec-if = pgrep -x spotify
+click-left = playerctl previous
 
 [module/temperature]
 type = internal/temperature
