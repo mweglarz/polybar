@@ -18,7 +18,7 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/bottom]
+[bar/bottomR]
 monitor = ${env:MONITOR:HDMI-0}
 width = 100%
 height = 27
@@ -41,7 +41,7 @@ module-margin-right = 6
 font-0 = "DejaVu Sans Mono for Powerline:pixelsize=8;1"
 
 modules-left = i3
-modules-center = 
+modules-center = xwindow
 ;modules-right = filesystem volume xkeyboard memory cpu wlan eth temperature date powermenu
 modules-right = memory cpu temperature
 
@@ -54,55 +54,21 @@ scroll-down = i3wm-wsprev
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[bar/bottom1]
-;inherit = bar/bottom
+[bar/bottomL]
+inherit = bar/bottomR
 monitor = ${env:MONITOR:DP-0}
-width = 100%
-height = 27
-;offset-x = 1%
-;offset-y = 1%
-;radius = 6.0
-fixed-center = false
-bottom = true
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+[bar/topR]
+inherit = bar/bottomR
 
-line-size = 3
-line-color = #f00
+bottom = false
 
-border-size = 4
-border-color = #00000000
+modules-left = filesystem 
+modules-center = mpd
+modules-right = eth wlan xkeyboard date
 
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = "DejaVu Sans Mono for Powerline:pixelsize=8;1"
-
-modules-left = i3
-modules-center = 
-;modules-right = filesystem volume xkeyboard memory cpu wlan eth temperature date powermenu
-modules-right = memory cpu temperature
-
-;tray-position = right
-;tray-padding = 2
-;tray-transparent = true
-;tray-background = #0063ff
-
-wm-restack = i3
-override-redirect = false
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
-
-cursor-click = pointer
-cursor-scroll = ns-resize
+tray-position = right
+tray-padding = 2
 
 [module/xwindow]
 type = internal/xwindow
@@ -119,18 +85,25 @@ format-prefix-underline = ${colors.secondary}
 label-layout = %layout%
 label-layout-underline = ${colors.secondary}
 
-label-indicator-padding = 2
+label-indicator-padding = 1
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
 
 [module/filesystem]
 type = internal/fs
-interval = 25
+interval = 30
 
 mount-0 = /
+mount-1 = /home/marcin/data
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+fixed-values = true
+
+font-0 = "DejaVu Sans Mono for Powerline:pixelsize=3;1"
+label-font = 0
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %used%/%total%
+label-mounted-font = 0
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -247,21 +220,18 @@ type = internal/network
 interface = wlp3s0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = <ramp-signal><label-connected>
 format-connected-underline = #9f78e1
 label-connected = %essid%
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-disconnected = 
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = ▁
+ramp-signal-1 = ▂
+ramp-signal-2 = ▄
+ramp-signal-3 = ▆
+ramp-signal-4 = █
+
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
@@ -270,7 +240,7 @@ interface = enp0s31f6
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix = ""
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -282,19 +252,41 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
+date =  %A, %d %B %Y   %H:%M:%S
 
-date =
-date-alt = " %Y-%m-%d"
+[module/vol0]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_01_00.1.hdmi-stereo.monitor
 
-time = %H:%M
-time-alt = %H:%M:%S
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
 
-label = %date% %time%
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/vol1]
+inherit = module/vol0
+sink = alsa_output.pci-0000_00_1f.3.analog-stereo.monitor
 
 [module/volume]
 type = internal/volume
