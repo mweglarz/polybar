@@ -73,7 +73,7 @@ monitor = ${env:MONITOR:HDMI-0}
 bottom = false
 
 modules-left = filesystem 
-modules-center = mpd
+modules-center = spotify
 modules-right = vol0 vol1 eth wlan xkeyboard date
 
 tray-position = right
@@ -85,7 +85,7 @@ monitor = ${env:MONITOR:DP-0}
 bottom = false
 
 modules-left = filesystem 
-modules-center = mpd
+modules-center = spotify
 modules-right = vol0 vol1 eth wlan xkeyboard date
 
 [module/xwindow]
@@ -271,6 +271,12 @@ exec = /home/marcin/Development/go/bin/mw-volume alsa_output.pci-0000_00_1f.3.an
 scroll-up = /home/marcin/Development/go/bin/mw-volume -up alsa_output.pci-0000_00_1f.3.analog-stereo
 scroll-down = /home/marcin/Development/go/bin/mw-volume -down alsa_output.pci-0000_00_1f.3.analog-stereo
 label =   %output%
+
+[module/spotify]
+type = custom/script
+exec = /home/marcin/bin/mw-spotify.sh
+interval = 5
+label = %output:0:100:...%
 
 [module/temperature]
 type = internal/temperature
