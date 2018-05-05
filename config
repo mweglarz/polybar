@@ -30,13 +30,10 @@ foreground = #ccffffff
 line-color = ${self.background}
 line-size = 2
 
-spacing = 3
-padding-right = 4
+;spacing = 3
+padding-right = 2
 module-margin-left = 0
-module-margin-right = 6
-
-;modules-left = bspwm
-;modules-right = cpu memory
+module-margin-right = 2
 
 font-0 = "DejaVu Sans Mono for Powerline:pixelsize=8;1"
 
