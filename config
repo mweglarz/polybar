@@ -35,7 +35,10 @@ padding-right = 2
 module-margin-left = 0
 module-margin-right = 2
 
-font-0 = "DejaVu Sans Mono for Powerline:pixelsize=8;1"
+font-0 = "DejaVu Sans Mono for Powerline:pixelsize=8;0"
+font-1 = "unifont:fontformat=truetype:size=8:antialias=false;1"
+font-2 = "Wuncon Siji:pixelsize=10;1"
+font-3 = "fontawesome:pixelsize=10;1"
 
 modules-left = i3
 modules-center = xwindow
@@ -96,11 +99,8 @@ mount-1 = /home/marcin/data
 
 fixed-values = true
 
-font-0 = "DejaVu Sans Mono for Powerline:pixelsize=3;1"
-label-font = 0
 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %used%/%total%
-label-mounted-font = 0
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -120,9 +120,6 @@ ws-icon-2 = code;
 ws-icon-3 = music;
 ws-icon-4 = chat;
 ws-icon-default = 
-
-font-0 = "DejaVu Sans Mono for Powerline:pixelsize=8;1"
-font-1 = "MaterialIcons:size=10;0"
 
 label-mode-padding = 2
 label-mode-foreground = #000
@@ -170,28 +167,20 @@ label = CPU
 label-foreground = #99
 
 ramp-coreload-0 = ▁
-ramp-coreload-0-font = 2
 ramp-coreload-0-foreground = #aaff77
 ramp-coreload-1 = ▂
-ramp-coreload-1-font = 2
 ramp-coreload-1-foreground = #aaff77
 ramp-coreload-2 = ▃
-ramp-coreload-2-font = 2
 ramp-coreload-2-foreground = #aaff77
 ramp-coreload-3 = ▄
-ramp-coreload-3-font = 2
 ramp-coreload-3-foreground = #aaff77
 ramp-coreload-4 = ▅
-ramp-coreload-4-font = 2
 ramp-coreload-4-foreground = #fba922
 ramp-coreload-5 = ▆
-ramp-coreload-5-font = 2
 ramp-coreload-5-foreground = #fba922
 ramp-coreload-6 = ▇
-ramp-coreload-6-font = 2
 ramp-coreload-6-foreground = #ff5555
 ramp-coreload-7 = █
-ramp-coreload-7-font = 2
 ramp-coreload-7-foreground = #ff5555
 
 [module/memory]
@@ -274,11 +263,8 @@ bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = |
-bar-volume-indicator-font = 2
 bar-volume-fill = ─
-bar-volume-fill-font = 2
 bar-volume-empty = ─
-bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/vol1]
@@ -306,11 +292,8 @@ bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = |
-bar-volume-indicator-font = 2
 bar-volume-fill = ─
-bar-volume-fill-font = 2
 bar-volume-empty = ─
-bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/temperature]
