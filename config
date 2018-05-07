@@ -90,7 +90,7 @@ modules-right = vol0 vol1 eth wlan xkeyboard date
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:150:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -281,14 +281,14 @@ label = %{F#81b71a}  %{F-}%output:0:100:...%
 
 [module/spotify-next]
 type = custom/script
-interval = 600
+interval = 20
 exec = echo  
 exec-if = pgrep -x spotify
 click-left = playerctl next
 
 [module/spotify-previous]
 type = custom/script
-interval = 600
+interval = 20
 exec = echo 
 exec-if = pgrep -x spotify
 click-left = playerctl previous
