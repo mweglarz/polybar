@@ -55,7 +55,7 @@ bottom = true
 modules-left = i3
 modules-center = xwindow
 ;modules-right = filesystem volume xkeyboard memory cpu wlan eth temperature date powermenu
-modules-right = memory cpu temperature
+modules-right = net-bandwidth memory cpu temperature
 
 [bar/bottomL]
 inherit = bar/commonBar
@@ -65,7 +65,7 @@ bottom = true
 modules-left = i3
 modules-center = xwindow
 ;modules-right = filesystem volume xkeyboard memory cpu wlan eth temperature date powermenu
-modules-right = memory cpu temperature
+modules-right = net-bandwidth memory cpu temperature
 
 [bar/topR]
 inherit = bar/commonBar
@@ -73,11 +73,11 @@ monitor = ${env:MONITOR:HDMI-0}
 bottom = false
 
 modules-left = filesystem 
-modules-center = spotify-previous spotify spotify-next 
+; modules-center = spotify-previous spotify spotify-next 
 modules-right = vol0 vol1 eth wlan xkeyboard date
 
-tray-position = right
-tray-padding = 2
+tray-position = center
+tray-padding = 5
 
 [bar/topL]
 inherit = bar/commonBar
@@ -231,7 +231,6 @@ label-connected = %essid%
 
 format-disconnected =
 
-; TODO: up / down bandwidth
 [module/eth]
 type = internal/network
 interface = enp0s31f6
@@ -242,20 +241,23 @@ format-connected-font = 3
 format-connected-prefix = "  "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
-
 format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/net-bandwidth]
+type = internal/network
+interface = enp0s31f6
+interval = 1.0
+accumulate-stats = false
+label-connected =  %downspeed%  %upspeed%
+format-disconnected =
 
 [module/date]
 type = internal/date
 interval = 1
 date =  %A, %d %B %Y   %H:%M:%S
 
-[sinks]
-sink1 = alsa_output.pci-0000_00_1f.3.analog-stereo.monitor
+; [sinks]
+; sink1 = alsa_output.pci-0000_00_1f.3.analog-stereo.monitor
 
 [module/vol0]
 type = custom/script
