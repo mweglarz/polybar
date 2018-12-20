@@ -76,17 +76,20 @@ modules-left = filesystem
 ; modules-center = spotify-previous spotify spotify-next 
 modules-right = vol0 vol1 eth wlan xkeyboard date
 
-tray-position = center
-tray-padding = 5
 
 [bar/topL]
 inherit = bar/commonBar
 monitor = ${env:MONITOR:DP-0}
 bottom = false
 
-modules-left = filesystem 
-modules-center = spotify-previous spotify spotify-next 
+modules-left = filesystem spotify-previous spotify spotify-next
+;modules-center = spotify-previous spotify spotify-next 
 modules-right = vol0 vol1 eth wlan xkeyboard date
+
+tray-position = center
+tray-padding = 5
+;tray-detach = true
+;tray-transparent = true
 
 [module/xwindow]
 type = internal/xwindow
@@ -291,6 +294,7 @@ click-left = playerctl next
 [module/spotify-previous]
 type = custom/script
 interval = 20
+label-padding-left = 25
 exec = echo 
 exec-if = pgrep -x spotify
 click-left = playerctl previous
