@@ -266,10 +266,10 @@ date =  %A, %d %B %Y   %H:%M:%S
 type = custom/script
 interval = 1
 ;sink = alsa_output.pci-0000_01_00.1.hdmi-stereo
-sink = alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo
-exec = /home/marcin/Development/go/bin/mw-volume ${self.sink}
-scroll-up = /home/marcin/Development/go/bin/mw-volume -up ${self.sink}
-scroll-down = /home/marcin/Development/go/bin/mw-volume -down ${self.sink}
+sink = "alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo"
+exec = /home/marcin/Development/go/bin/mw-volume alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo
+scroll-up = /home/marcin/Development/go/bin/mw-volume -up alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo
+scroll-down = /home/marcin/Development/go/bin/mw-volume -down alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo
 label =   %output%
 
 [module/vol1]
