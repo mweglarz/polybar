@@ -82,9 +82,9 @@ inherit = bar/commonBar
 monitor = ${env:MONITOR:DP-0}
 bottom = false
 
-modules-left = filesystem spotify-previous spotify spotify-next
+modules-left = spotify-previous spotify spotify-next
 ;modules-center = spotify-previous spotify spotify-next 
-modules-right = vol0 vol1 eth wlan xkeyboard date
+modules-right = vol0 vol1 xkeyboard date
 
 tray-position = center
 tray-padding = 5
